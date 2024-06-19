@@ -18,7 +18,7 @@ class CountDown extends StatelessWidget {
           endTime: endTime,
           textStyle: const TextStyle(fontSize: 15, color: Colors.black),
           onEnd: () {
-            print('flash has end');
+            // print('flash has end');
           },
         ),
       ),

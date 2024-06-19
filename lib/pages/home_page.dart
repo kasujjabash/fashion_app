@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: _page[_selectedIndex],
-      bottomNavigationBar: BottomNavBar(
+      bottomNavigationBar: BottomNavigation(
         onTabChange: (index) => navigateBottomBar(index),
       ),
     );

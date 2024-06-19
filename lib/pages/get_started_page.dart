@@ -17,7 +17,7 @@ class GetStartedPage extends StatelessWidget {
                   Column(children: [
                     Padding(
                       padding: const EdgeInsets.all(20.0),
-                      child: Container(
+                      child: SizedBox(
                         height: 420,
                         width: 210,
                         //coved image
@@ -37,7 +37,7 @@ class GetStartedPage extends StatelessWidget {
                   Column(children: [
                     Padding(
                       padding: const EdgeInsets.all(5.0),
-                      child: Container(
+                      child: SizedBox(
                         height: 200,
                         width: 100,
                         //coved image
@@ -52,7 +52,7 @@ class GetStartedPage extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.all(20.0),
-                      child: Container(
+                      child: SizedBox(
                         height: 180,
                         width: 100,
                         //coved image

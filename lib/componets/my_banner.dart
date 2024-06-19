@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/screens/see_all.dart';
+
+import 'shop_button.dart';
 
 class MyBanner extends StatelessWidget {
   const MyBanner({super.key});
@@ -38,25 +41,9 @@ class MyBanner extends StatelessWidget {
                   ),
                 ),
 
-                //button
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                  child: Container(
-                      // width: 150,
-                      // height: 50,
-                      decoration: BoxDecoration(
-                        color: Colors.brown,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: const Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 50, vertical: 10),
-                        child: Text(
-                          'Shop Now',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      )),
+                ShopButton(
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) =>const SeeAll())),
+                  buttonText: 'Shop Now',
                 )
               ],
             ),
