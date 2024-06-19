@@ -7,12 +7,21 @@ class CountDown extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CountdownTimer(
-      endTime: endTime,
-      textStyle: const TextStyle(fontSize: 15, color: Colors.black),
-      onEnd: () {
-        print('flash has end');
-      },
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        padding: const EdgeInsets.all(10),
+        decoration: BoxDecoration(
+            color: const Color.fromRGBO(233, 224, 216, 1),
+            borderRadius: BorderRadius.circular(15)),
+        child: CountdownTimer(
+          endTime: endTime,
+          textStyle: const TextStyle(fontSize: 15, color: Colors.black),
+          onEnd: () {
+            print('flash has end');
+          },
+        ),
+      ),
     );
   }
 }

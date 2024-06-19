@@ -111,10 +111,13 @@ class GetStartedPage extends StatelessWidget {
               MyButton(
                 text: "Let's Get Started",
                 onTap: () {
+                  //Pop the screen not to return back
+                  Navigator.pop(context);
+                  //navigate to the next page
                   Navigator.pushNamed(context, RouteGenerator.homeScreen);
                 },
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               //already have an account sign in

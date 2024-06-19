@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'module/fashion_module.dart';
+import '../module/fashion_module.dart';
 
 class FashionTile extends StatelessWidget {
-  final fashionItems fashion;
-  const FashionTile({super.key, required this.fashion});
+  final FashionItem fashionItem;
+  const FashionTile(fashionList, {super.key, required this.fashionItem,});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class FashionTile extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20),
               child: Image.asset(
-                fashion.imagePath,
+                fashionItem.imagePath,
                 // // height: 180,
                 // // width: 120,
                 fit: BoxFit.cover,
@@ -34,7 +34,7 @@ class FashionTile extends StatelessWidget {
               children: [
                 //name of the item
                 Text(
-                  fashion.name,
+                  fashionItem.name,
                   style: const TextStyle(fontSize: 15),
                 ),
 
@@ -46,7 +46,7 @@ class FashionTile extends StatelessWidget {
                       color: Colors.yellow[800],
                       size: 18,
                     ),
-                    Text(fashion.rating)
+                    Text(fashionItem.rating)
                   ],
                 )
               ],
@@ -54,7 +54,7 @@ class FashionTile extends StatelessWidget {
           ),
           //price
           Text(
-            "\$" + fashion.price,
+            "\$${fashionItem.price}",
             style: const TextStyle(fontWeight: FontWeight.bold),
           )
         ],

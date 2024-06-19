@@ -11,11 +11,10 @@ class RouteGenerator {
     switch (settings.name) {
       case getstartedscreen:
         return MaterialPageRoute(builder: (context) => const GetStartedPage());
-
       case homeScreen:
         return MaterialPageRoute(builder: (context) => const HomePage());
-      
 
+        
       default:
         return MaterialPageRoute(builder: (context) => const GetStartedPage());
     }
