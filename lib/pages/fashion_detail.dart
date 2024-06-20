@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/componets/Size.dart';
 import 'package:myapp/module/fashion_module.dart';
-
-import '../componets/my_button.dart';
-import '../componets/shop_button.dart';
+import '../componets/detail_footer.dart';
 
 class FashionDetails extends StatelessWidget {
   final FashionItem fashionItem;
@@ -11,161 +10,136 @@ class FashionDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: Colors.brown.shade100,
-      appBar: AppBar(
-        foregroundColor: Colors.white,
-        backgroundColor: Colors.brown.shade600,
-        title: const Text(
-          "Fashion Details",
-          style: TextStyle(color: Colors.white),
-        ),
-      ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          //fashion image
-          Image.asset(
-            fashionItem.imagePath,
+        // backgroundColor: Colors.brown.shade100,
+        appBar: AppBar(
+          elevation: 0,
+          foregroundColor: Colors.white,
+          backgroundColor: Colors.brown.shade600,
+          title: const Text(
+            "Fashion Details",
+            style: TextStyle(color: Colors.white),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        ),
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              //fashion image
+              Image.asset(
+                fashionItem.imagePath,
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    //life style + rating
-                    Text(
-                      fashionItem.style,
-                      style:
-                          TextStyle(fontSize: 18, color: Colors.grey.shade500),
-                    ),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Icon(
-                          Icons.star,
-                          color: Colors.orange.shade300,
-                          size: 20,
-                        ),
+                        //life style + rating
                         Text(
-                          fashionItem.rating,
+                          fashionItem.style,
                           style: TextStyle(
                               fontSize: 18, color: Colors.grey.shade500),
+                        ),
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.star,
+                              color: Colors.orange.shade300,
+                              size: 20,
+                            ),
+                            Text(
+                              fashionItem.rating,
+                              style: TextStyle(
+                                  fontSize: 18, color: Colors.grey.shade500),
+                            )
+                          ],
                         )
                       ],
-                    )
-                  ],
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                //Fashion name
-                Text(
-                  fashionItem.name,
-                  style: const TextStyle(
-                      fontSize: 25, fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    //Description
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    //Fashion name
+                    Text(
+                      fashionItem.name,
+                      style: const TextStyle(
+                          fontSize: 25, fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        //Description
+                        const Text(
+                          "Description",
+                          style: TextStyle(
+                            fontSize: 20,
+                          ),
+                        ),
+
+                        //prices
+                        Text(
+                          "Price: \$${fashionItem.price.toString()}",
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.grey.shade500,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    //fashon description
+                    Text(
+                      fashionItem.description,
+                      style: const TextStyle(
+                        fontSize: 18,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    // Select size
                     const Text(
-                      "Description",
+                      "Select Size",
                       style: TextStyle(
                         fontSize: 20,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
 
-                    //prices
-                    Text(
-                      "Price: \$${fashionItem.price.toString()}",
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.grey.shade500,
-                      ),
+                    //Fashion sizes
+                    Row(
+                      children: [
+                        //size S
+                        FashionSize(onTap: () {}, size: "S"),
+                        //size M
+                        FashionSize(onTap: () {}, size: "M"),
+                        //size L
+                        FashionSize(onTap: () {}, size: "L"),
+                        //size S
+                        FashionSize(onTap: () {}, size: "XL"),
+                        //size XXL
+                        FashionSize(onTap: () {}, size: "XXL"),
+
+                        //size XXXL
+                        FashionSize(onTap: () {}, size: "XXXL"),
+                      ],
                     ),
                   ],
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
-                //fashon description
-                Text(
-                  fashionItem.description,
-                  style: const TextStyle(
-                    fontSize: 18,
-                  ),
-                ),
-
-                //fashion price + add to cart button
-              ],
-            ),
-          )
-        ],
-      ),
-      bottomNavigationBar: Container(
-        height: 100,
-        decoration: BoxDecoration(color: Colors.brown.shade800),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                children: [
-                  //decrease
-                  Container(
-                    padding: const EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                        color: const Color.fromRGBO(233, 224, 216, 1),
-                        borderRadius: BorderRadius.circular(8)),
-                    child: const Icon(
-                      Icons.remove,
-                      size: 20,
-                      color: Colors.black,
-                    ),
-                  ),
-                  //sized box
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  //Number
-                  const Text(
-                    '1',
-                    style: TextStyle(color: Colors.white, fontSize: 20),
-                  ),
-
-                  //sized box
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  //Increase
-                  Container(
-                    padding: const EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                        color: Colors.brown.shade400,
-                        borderRadius: BorderRadius.circular(8)),
-                    child: const Icon(
-                      Icons.add,
-                      size: 20,
-                      color: Colors.white,
-                    ),
-                  ),
-                ],
-              ),
-              //button to add to cart
-              ShopButton(
-                buttonText: "Add to cart",
-                onTap: () {},
               )
             ],
           ),
         ),
-      ),
-    );
+
+        // Increase button, Number of items, descrease button, and add to cart button
+        bottomNavigationBar: const DetailFooter());
   }
 }

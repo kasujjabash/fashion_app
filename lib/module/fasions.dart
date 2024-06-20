@@ -1,4 +1,6 @@
+import 'cart_item.dart';
 import 'fashion_module.dart';
+import 'favorite_item.dart';
 
 class Fashion {
   //list of fashions
@@ -44,7 +46,32 @@ class Fashion {
           "Embrace a bohemian chic vibe with our floral print maxi dress. Crafted from lightweight fabric, this dress features a flattering V-neckline and flowy silhouette that enhances movement with every step.",
     ),
   ];
+//list of cart item
+  final List<CartItem> cartItem = [];
+  //list of favourite items
+  final List<FavoriteItem> favoriteItem = [];
+  //?getter
+  List<CartItem> get _cartItem => cartItem;
+  List<FavoriteItem> get _favoriteItem => favoriteItem;
+//?operations
+//add items to cart
 
-  //getter
-  // List<FashionItem> get getFashionItems => fashionItem;
+//   void addItemToCart(FashionItem item) {
+//     //check if the item already exist in the cart
+//     final existingCartItem = _cartItem.firstWhere(
+//         (_cartItem) => _cartItem.fashionItem == item,
+//         orElse: () => CartItem(fashionItem: item, quantity: 0));
+
+//     //Display a snakbar if the item already exist it cart
+//     if (existingCartItem.fashionItem == cartItem) {
+//       return 
+//     }
+//   }
+// //remove item from cart
+//add items to favourites
+//remove item from favourite
+//Increase cart items
+//decrease cart items
+//display quantity
+// Change color for selected item size
 }
