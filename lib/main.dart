@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:myapp/componets/router.dart';
 import 'package:myapp/constants/hive_box_constants.dart';
+import 'package:myapp/module/hive_modules/chat_module.dart';
 import 'package:myapp/module/hive_modules/product_module.dart';
 import 'package:myapp/module/hive_modules/user_module.dart';
 import 'package:myapp/screens/see_all.dart';
@@ -11,8 +12,10 @@ Future<void> main() async {
   await Hive.initFlutter();
   Hive.registerAdapter<Product>(ProductAdapter());
   Hive.registerAdapter<User>(UserAdapter());
+  Hive.registerAdapter<Chat>(ChatAdapter());
   userBox = await Hive.openBox("users");
   productBox = await Hive.openBox("products");
+  chatBox = await Hive.openBox('chats');
 
   runApp(const MyApp());
 }

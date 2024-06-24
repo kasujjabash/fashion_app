@@ -1,10 +1,15 @@
 // file: lib/screens/home_screen.dart
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:myapp/componets/count_down.dart';
-import 'package:myapp/componets/fashion_tile.dart';
+import 'package:myapp/componets/product_tile.dart';
 import 'package:myapp/componets/category_scroll.dart';
 import 'package:myapp/componets/my_banner.dart';
 import 'package:myapp/componets/search_bar.dart';
+import 'package:myapp/constants/hive_box_constants.dart';
+import 'package:myapp/module/hive_modules/product_module.dart';
 
 import '../module/fasions.dart';
 import '../pages/fashion_detail.dart';
@@ -115,29 +120,33 @@ class _HomeScreenState extends State<HomeScreen> {
               // Grid view
               SizedBox(
                 height: 400, // Adjust the height as needed
-                child: GridView.builder(
-                  physics: const NeverScrollableScrollPhysics(),
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                  ),
-                  itemCount: fashionList.length,
-                  itemBuilder: (context, index) {
-                    return FashionTile(
-                      onTap: () {
-                        // Navigate to details page when tile is tapped
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => FashionDetails(
-                              fashionItem: fashionList[index],
+                child: ValueListenableBuilder<Box<Product>>(
+                    valueListenable:
+                        productBox.listenable(), //listening to the productbox
+                    builder: (context,box,widget ) {
+
+
+                      List<Product> productBoxes = box.values.toList();
+                      return GridView.builder(
+                        physics: const NeverScrollableScrollPhysics(),
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                        ),
+                        itemCount: productBoxes.length,
+                        itemBuilder: (context, index) {
+                          return GestureDetector(
+                            onTap: () {
+                              Get.to(()=> FashionDetails(productItem: productBoxes[index]));
+                            },
+                            child: FashionTile(
+                              
+                              productItem: productBoxes[index],
                             ),
-                          ),
-                        );
-                      },
-                      fashionItem: fashionList[index],
-                    );
-                  },
-                ),
+                          );
+                        },
+                      );
+                    }),
               ),
             ],
           ),

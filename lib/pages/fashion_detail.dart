@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/componets/Size.dart';
 import 'package:myapp/module/fashion_module.dart';
+import 'package:myapp/module/hive_modules/product_module.dart';
 import '../componets/detail_footer.dart';
 
 class FashionDetails extends StatelessWidget {
-  final FashionItem fashionItem;
-  const FashionDetails({super.key, required this.fashionItem});
+  final Product productItem;
+  const FashionDetails({super.key, required this.productItem});
 
   @override
   Widget build(BuildContext context) {
@@ -19,14 +20,15 @@ class FashionDetails extends StatelessWidget {
             "Fashion Details",
             style: TextStyle(color: Colors.white),
           ),
+          actions: [],
         ),
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               //fashion image
-              Image.asset(
-                fashionItem.imagePath,
+              Image.memory(
+                productItem.productImage,
               ),
               Padding(
                 padding:
@@ -39,7 +41,7 @@ class FashionDetails extends StatelessWidget {
                       children: [
                         //life style + rating
                         Text(
-                          fashionItem.style,
+                          productItem.style,
                           style: TextStyle(
                               fontSize: 18, color: Colors.grey.shade500),
                         ),
@@ -51,7 +53,7 @@ class FashionDetails extends StatelessWidget {
                               size: 20,
                             ),
                             Text(
-                              fashionItem.rating,
+                              productItem.rating.toString(),
                               style: TextStyle(
                                   fontSize: 18, color: Colors.grey.shade500),
                             )
@@ -64,7 +66,7 @@ class FashionDetails extends StatelessWidget {
                     ),
                     //Fashion name
                     Text(
-                      fashionItem.name,
+                      productItem.name,
                       style: const TextStyle(
                           fontSize: 25, fontWeight: FontWeight.bold),
                     ),
@@ -84,7 +86,7 @@ class FashionDetails extends StatelessWidget {
 
                         //prices
                         Text(
-                          "Price: \$${fashionItem.price.toString()}",
+                          "Price: \$${productItem.price.toString()}",
                           style: TextStyle(
                             fontSize: 18,
                             color: Colors.grey.shade500,
@@ -97,7 +99,7 @@ class FashionDetails extends StatelessWidget {
                     ),
                     //fashon description
                     Text(
-                      fashionItem.description,
+                      productItem.description,
                       style: const TextStyle(
                         fontSize: 18,
                       ),

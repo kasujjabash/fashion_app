@@ -17,7 +17,7 @@ class ChatScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => FormScreen(),
+                      builder: (context) => const FormScreen(),
                     ),
                   );
                 },
